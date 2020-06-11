@@ -1,0 +1,35 @@
+.text{
+    color: blue;
+  }
+
+  .sampleText{
+      color: violet;
+      font-style: italic;
+  }
+
+  .bold{
+    font-weight: bold;
+  }
+  
+  .Cockpit Button{
+    background-color: green;
+    color: white;
+    font: inherit;
+    border: 1px solid blue;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .Cockpit Button:hover{
+    background-color : lightblue;
+    color : yellow;
+  }
+  
+  .Cockpit Button.Red{
+    background-color:  red;
+  }
+  
+  .Cockpit Button.Red:hover{
+    background-color: yellow;
+  }
+        
