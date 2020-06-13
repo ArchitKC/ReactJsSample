@@ -2,14 +2,8 @@ import React, {Component} from 'react';
 
 import Person from './Person/Person';
 
-
 class Persons extends Component{
-
-  componentWillUnmount(){
-    console.log('This compnent has been unmount [Persons.js]')
-  }
-
-  render(){
+   render(){
       return (this.props.persons.map((eachPerson, index) => {
         return (
           <Person 
@@ -20,8 +14,7 @@ class Persons extends Component{
             onChangeText = {(event)=>this.props.onChange(event, eachPerson.id)}
           />
         );
-      })
-    )  
+      }))  
   };
 };
 

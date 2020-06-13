@@ -3,6 +3,7 @@ import classes from './App.css';
  
 import Persons from '../components/Persons/Persons'; 
 import Cockpit from '../cockpit/Cockpit'
+import WithClass from '../HOC/withClass'
  
 class App extends Component {
 
@@ -13,7 +14,8 @@ class App extends Component {
       {id: '0003', name: 'Archit - Sara', age: 53},
       {id: '0004', name: 'Jol', age: 33}      
     ],
-    showPerson : true
+    showPerson : true,
+    changeCounter : 0
   }
    
   onTextChange=(event,id)=>{
@@ -30,7 +32,14 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState({persons : persons});
+    //this.setState({persons : persons});
+
+    this.setState((prevState,props)=>{
+      return{
+        persons: persons,
+        changeCounter : prevState.changeCounter + 1
+      }
+    });
   };
 
   togglePersonDisplay=()=>{
@@ -53,14 +62,14 @@ class App extends Component {
       <div> 
        <Persons
        persons ={this.state.persons}
-       click = {this.deletePersonHandler}
+       click = {this.deletePersonHandler.bind(this)}
        onChange = {this.onTextChange}
        />
       </div>  
     }
  
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
          <Cockpit
          title= {this.props.appTitle}
          showPerson = {this.state.showPerson}
@@ -68,7 +77,7 @@ class App extends Component {
          togglePersonDisplay = {this.togglePersonDisplay}/>
         {togglePerson}  
           
-      </div>
+      </WithClass>
     );
   }
 }
