@@ -1,8 +1,28 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 
 import classes from './Cockpit.css';
 
+
 const Cockpit = (props)=>{    
+    useEffect(()=>{
+        console.log('Use Effect [Cockpit.js]')
+
+        setTimeout(()=>{
+            console.log('It is been called');
+        },1000);
+
+        return()=>{
+            console.log('Clean up Component  [Cockpit.js]');
+        };
+    },[]);
+
+
+    useEffect(()=>{
+        console.log('2nd session for UseEffect [Cockpit.js]');
+        return()=>{
+            console.log('2nd clean up initiated [Cockpit.js]');
+        }
+    });
     let btnStyle ='';
     let newStyle = ['']; 
     if(props.showPerson){        
@@ -15,7 +35,7 @@ const Cockpit = (props)=>{
     }
     return(
         <div className={classes.Cockpit}>
-            <h1>This is my React App</h1>
+            <h1>{props.title}</h1>
             <p className={newStyle}>Hope this works well</p>
             
             {/* <button style ={style} onClick={()=> this.togglePersonDisplay('Archit!!!!')}>Switch Name</button> */}
